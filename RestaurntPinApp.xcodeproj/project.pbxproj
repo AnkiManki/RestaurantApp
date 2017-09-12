@@ -12,6 +12,7 @@
 		9D0F1FA81F6815A300688CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0F1FA61F6815A300688CCB /* Main.storyboard */; };
 		9D0F1FAA1F6815A300688CCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D0F1FA91F6815A300688CCB /* Assets.xcassets */; };
 		9D0F1FAD1F6815A300688CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D0F1FAB1F6815A300688CCB /* LaunchScreen.storyboard */; };
+		9D0F1FB91F68164600688CCB /* RestaurantCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0F1FB81F68164600688CCB /* RestaurantCellVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		9D0F1FA91F6815A300688CCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D0F1FAC1F6815A300688CCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D0F1FAE1F6815A300688CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D0F1FB81F68164600688CCB /* RestaurantCellVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCellVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,47 @@
 		9D0F1FA11F6815A300688CCB /* RestaurntPinApp */ = {
 			isa = PBXGroup;
 			children = (
-				9D0F1FA21F6815A300688CCB /* AppDelegate.swift */,
+				9D0F1FB71F6815E400688CCB /* Supporting Files */,
+				9D0F1FB61F6815BC00688CCB /* Model */,
+				9D0F1FB51F6815BA00688CCB /* View */,
+				9D0F1FB41F6815B800688CCB /* Controller */,
+			);
+			path = RestaurntPinApp;
+			sourceTree = "<group>";
+		};
+		9D0F1FB41F6815B800688CCB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
 				9D0F1FA41F6815A300688CCB /* ViewController.swift */,
+				9D0F1FB81F68164600688CCB /* RestaurantCellVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9D0F1FB51F6815BA00688CCB /* View */ = {
+			isa = PBXGroup;
+			children = (
 				9D0F1FA61F6815A300688CCB /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9D0F1FB61F6815BC00688CCB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9D0F1FB71F6815E400688CCB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D0F1FA21F6815A300688CCB /* AppDelegate.swift */,
 				9D0F1FA91F6815A300688CCB /* Assets.xcassets */,
 				9D0F1FAB1F6815A300688CCB /* LaunchScreen.storyboard */,
 				9D0F1FAE1F6815A300688CCB /* Info.plist */,
 			);
-			path = RestaurntPinApp;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D0F1FB91F68164600688CCB /* RestaurantCellVC.swift in Sources */,
 				9D0F1FA51F6815A300688CCB /* ViewController.swift in Sources */,
 				9D0F1FA31F6815A300688CCB /* AppDelegate.swift in Sources */,
 			);
@@ -276,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U52X69UCNJ;
-				INFOPLIST_FILE = RestaurntPinApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RestaurntPinApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanmarkovic.RestaurntPinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,7 +327,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U52X69UCNJ;
-				INFOPLIST_FILE = RestaurntPinApp/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RestaurntPinApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stefanmarkovic.RestaurntPinApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

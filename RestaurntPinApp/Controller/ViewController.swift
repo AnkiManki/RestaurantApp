@@ -18,6 +18,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
+    var restaurantIsVisited = Array(repeating: false, count: 21)
+    
     @IBOutlet weak var myTable: UITableView!
     
     override func viewDidLoad() {
@@ -26,6 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         myTable.dataSource = self
     }
     
+    //MARK: - TableView functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return restaurantNames.count
     }
@@ -40,11 +43,70 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.thumbnailImageView.layer.cornerRadius = 30.0
         cell.thumbnailImageView.clipsToBounds = true
 
+        cell.accessoryType = restaurantIsVisited[indexPath.row] ? .checkmark : .none
+        
         return cell
         
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let alert = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let callActionHandler = {(action: UIAlertAction!) in
+            let alertMessage = UIAlertController(title: "Service Unavalable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
+            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertMessage, animated: true, completion: nil)
+        }
+        
+        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
+        alert.addAction(callAction)
+        
+        let checkInActionHandler = {(alert: UIAlertAction!) in
+            let cell = self.myTable.cellForRow(at: indexPath)
+            cell?.accessoryType = .checkmark
+            self.restaurantIsVisited[indexPath.row] = true
+        }
+        
+        let checkInAction = UIAlertAction(title: "Check In", style: .default, handler: checkInActionHandler)
+        alert.addAction(checkInAction)
+        
+        
+        
+        
+        
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+        
+    }
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

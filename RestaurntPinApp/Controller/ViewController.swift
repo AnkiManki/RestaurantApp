@@ -5,7 +5,7 @@
 //  Created by Stefan Markovic on 9/12/17.
 //  Copyright © 2017 Stefan Markovic. All rights reserved.
 //
-
+// STRANA 200
 import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -28,7 +28,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         myTable.dataSource = self
     }
     
-    //MARK: - TableView functions
+    //MARK:- TableView functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return restaurantNames.count
     }
@@ -42,17 +42,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.thumbnailImageView.image = UIImage(named: restaurantImages[indexPath.row])
         cell.thumbnailImageView.layer.cornerRadius = 30.0
         cell.thumbnailImageView.clipsToBounds = true
-
         cell.accessoryType = restaurantIsVisited[indexPath.row] ? .checkmark : .none
         
         return cell
-        
+
     }
 
+    //MARK:- Alert actions
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let alert = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
         
         let callActionHandler = {(action: UIAlertAction!) in
             let alertMessage = UIAlertController(title: "Service Unavalable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
@@ -63,25 +64,29 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
         alert.addAction(callAction)
         
+        
+        let checkInTitle = restaurantIsVisited[indexPath.row] ? "Undo Check In" : "Check In"
         let checkInActionHandler = {(alert: UIAlertAction!) in
             let cell = self.myTable.cellForRow(at: indexPath)
             cell?.accessoryType = .checkmark
-            self.restaurantIsVisited[indexPath.row] = true
+            self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
+            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .checkmark : .none
         }
         
-        let checkInAction = UIAlertAction(title: "Check In", style: .default, handler: checkInActionHandler)
+        let checkInAction = UIAlertAction(title: checkInTitle, style: .default, handler: checkInActionHandler)
         alert.addAction(checkInAction)
-        
-        
-        
-        
-        
-        alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
         
     }
+    
+    //MARK: - Delete rows in table
 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        //
+        
+    }
 
 }
 
